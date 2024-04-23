@@ -27,21 +27,12 @@ const spreadSheetFunctions = {
     median
 }
 
-const update = (event) => {
-    const element = event.target;
-    const value = element.value.replace(/\s/g, '');
-    if(!value(element.id) && value.startsWith('=') ) {
-
-    }
-
-  }
-
-
-
 const range = (start, end) => Array(end - start + 1).fill(start).map((element, index) => element + index);
 const charRange = (start, end) => range(start.charCodeAt(0), end.charCodeAt(0)).map(code => String.fromCharCode(code));
 const evalFormula = (x, cells) => {
-  
+  const idToText = id => cells.find(cell => cell.id === id).value;
+  const rangeRegex = /([A - J]);
+
 }
 
 window.onload = () => {
@@ -65,4 +56,12 @@ window.onload = () => {
         container.appendChild(input);
     })
   })
+}
+const update = (event) => {
+  const element = event.target;
+  const value = element.value.replace(/\s/g, '');
+  if(!value(element.id) && value.startsWith('=') ) {
+
+  }
+
 }
