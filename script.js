@@ -35,15 +35,10 @@ const evalFormula = (x, cells) => {
   const rangeRegex = /([A - J])([1-9][0-9]?):([A - J])([1-9][0-9]?)/gi;
   //parsInt passes number as integer below
   const rangeFromString = (num1, num2) => range(parseInt(num1), parseInt(num2));
-  const elemValue = (num) => {
-    const inner = (character) => {
-      //currying - returning a function within a function
-      return idToText(character + num)
-
-    }
-    return inner;
-  };
-  const addCharacters = character1 => character2 => num => charRange(character1, character2); {};
+   //currying - returning a function within a function
+  const elemValue = num => character => idToText(character + num);  
+  const addCharacters = character1 => character2 => num => charRange(character1, character2).map(elemValue(num));
+  const rangeExpanded = x.replace(rangeRegex);
 }
 
 window.onload = () => {
