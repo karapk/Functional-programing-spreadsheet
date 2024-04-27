@@ -1,4 +1,8 @@
-
+//infix is a mathematical operator like + - *
+const infixToFunction = {
+  //the below function is defining + that can be used later for addition without writing the whole equation
+  "+": (x, y) => x + y,
+};
 //isEven function takes num as parameter and returns true if number is even and false if not. The === is the strictly equal operator
 const isEven = (num) => num % 2 === 0;
 
